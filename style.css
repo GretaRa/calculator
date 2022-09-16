@@ -11,12 +11,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #e8f1f3;
 }
 
 .container{
-    border: 1px solid black ;
-    width: 25rem;
-    min-height: 40rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    width: 26rem;
+    min-height: 45rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,12 +30,12 @@ body{
 .display{
     border: 1px solid black ;
     width: 18rem;
-    min-height: 5rem;
+    min-height: 7rem;
     height: fit-content;
     padding: 1rem;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 0.5rem;
-    font-size: 25px;
+    font-size: 2rem;
 }
 
 .btn-menu{
@@ -61,6 +63,12 @@ body{
 button{
     padding: 2rem;
     background-color: #f3b1d5;
-    border: 1px solid #897f8f;
+    border: 1px solid #b287ca;
     border-radius: 1rem;
+    font-size: 1.7rem;
+}
+
+.equals-btn,
+.clear-btn{
+    background-color: #b66de6;
 }
