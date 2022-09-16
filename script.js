@@ -89,6 +89,16 @@ buttonZero.addEventListener('click', () => {
     displayValue.textContent += '0';
 });
 
+//Clear button 
+let buttonClear = document.querySelector('.clear-btn');
+buttonClear.addEventListener('click', () => {
+    displayValue.textContent = '';
+    a = undefined;
+    b = undefined;
+    operator = undefined;
+});
+
+
 //Function to prevent multiple operators in a row
 function calculate (oper){
     if (operator !== undefined){
