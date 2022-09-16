@@ -1,3 +1,4 @@
+//Create basic mathematical functions
 function add (a,b) {
     return a + b;
 };
@@ -14,6 +15,7 @@ function divide (a,b){
     return (a / b);
 };
 
+//takes an operator and 2 numbers and then calls created mathematical functions on the numbers
 function operate(a,operator,b){
     if (operator == '+'){
         return add(a,b);
@@ -29,7 +31,13 @@ function operate(a,operator,b){
 };
 
 let displayValue = document.querySelector('.display');
+let a 
+let b
+let operator
 
+
+
+//Populate the display when the buttons are clicked
 
 let buttonOne = document.querySelector('.one');
 buttonOne.addEventListener('click', () => {
@@ -83,25 +91,33 @@ buttonZero.addEventListener('click', () => {
 
 let buttonPlus = document.querySelector('.add-btn');
 buttonPlus.addEventListener('click', () => {
-    displayValue.textContent += '+';
+    operator = '+';
+   displayValue.textContent += '+';
 });
 
 let buttonSubstract = document.querySelector('.substract-btn');
 buttonSubstract.addEventListener('click', () => {
+    operator = '-';
     displayValue.textContent += '-';
 });
 
 let buttonMultiply = document.querySelector('.multiply-btn');
 buttonMultiply.addEventListener('click', () => {
+    operator = '*';
     displayValue.textContent += '*';
 });
 
 let buttonDivide = document.querySelector('.divide-btn');
 buttonDivide.addEventListener('click', () => {
+    operator = '/';
     displayValue.textContent += '/';
 });
 
+//Click on equal button runs the operate function to calculate value
 let buttonEquals = document.querySelector('.equals-btn');
 buttonEquals.addEventListener('click', () => {
-    displayValue.textContent = operate(displayValue);
+    a = Number(displayValue.textContent.split(operator)[0]);
+    b = Number(displayValue.textContent.split(operator)[1]);
+    displayValue.textContent = operate(a,operator,b);
 });
+
