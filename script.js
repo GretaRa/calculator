@@ -89,29 +89,30 @@ buttonZero.addEventListener('click', () => {
     displayValue.textContent += '0';
 });
 
+//Function to prevent multiple operators in a row
+function calculate (oper){
+    if (operator !== undefined){
+        return;
+    } else {
+        operator = oper;
+        displayValue.textContent += oper;
+}};
+
 let buttonPlus = document.querySelector('.add-btn');
-buttonPlus.addEventListener('click', () => {
-    operator = '+';
-   displayValue.textContent += '+';
-});
+buttonPlus.addEventListener('click', function()
+{calculate('+')});
 
 let buttonSubstract = document.querySelector('.substract-btn');
-buttonSubstract.addEventListener('click', () => {
-    operator = '-';
-    displayValue.textContent += '-';
-});
+buttonSubstract.addEventListener('click', function()
+{calculate('-')});
 
 let buttonMultiply = document.querySelector('.multiply-btn');
-buttonMultiply.addEventListener('click', () => {
-    operator = '*';
-    displayValue.textContent += '*';
-});
+buttonMultiply.addEventListener('click', function()
+{calculate('*')});
 
 let buttonDivide = document.querySelector('.divide-btn');
-buttonDivide.addEventListener('click', () => {
-    operator = '/';
-    displayValue.textContent += '/';
-});
+buttonDivide.addEventListener('click', function()
+{calculate('/')});
 
 //Click on equal button runs the operate function to calculate value
 let buttonEquals = document.querySelector('.equals-btn');
@@ -119,5 +120,6 @@ buttonEquals.addEventListener('click', () => {
     a = Number(displayValue.textContent.split(operator)[0]);
     b = Number(displayValue.textContent.split(operator)[1]);
     displayValue.textContent = operate(a,operator,b);
+    operator = undefined;
 });
 
