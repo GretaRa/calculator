@@ -108,28 +108,56 @@ function calculate (oper){
         displayValue.textContent += oper;
 }};
 
-let buttonPlus = document.querySelector('.add-btn');
-buttonPlus.addEventListener('click', function()
-{calculate('+')});
-
-let buttonSubstract = document.querySelector('.substract-btn');
-buttonSubstract.addEventListener('click', function()
-{calculate('-')});
-
-let buttonMultiply = document.querySelector('.multiply-btn');
-buttonMultiply.addEventListener('click', function()
-{calculate('*')});
-
-let buttonDivide = document.querySelector('.divide-btn');
-buttonDivide.addEventListener('click', function()
-{calculate('/')});
-
-//Click on equal button runs the operate function to calculate value
-let buttonEquals = document.querySelector('.equals-btn');
-buttonEquals.addEventListener('click', () => {
+//Takes number a and b and operator, calculates and displays the result
+function displayResult(){
     a = Number(displayValue.textContent.split(operator)[0]);
     b = Number(displayValue.textContent.split(operator)[1]);
     displayValue.textContent = operate(a,operator,b);
     operator = undefined;
+};
+
+
+let buttonPlus = document.querySelector('.add-btn');
+buttonPlus.addEventListener('click', () => {
+    if (operator === undefined){
+        calculate('+');
+    } else {
+        displayResult();
+        calculate('+')
+    }
 });
+
+let buttonSubstract = document.querySelector('.substract-btn');
+buttonSubstract.addEventListener('click', () => {
+    if (operator === undefined){
+        calculate('-');
+    } else {
+        displayResult();
+        calculate('-')
+    }
+});
+
+let buttonMultiply = document.querySelector('.multiply-btn');
+buttonMultiply.addEventListener('click', () => {
+    if (operator === undefined){
+        calculate('*');
+    } else {
+        displayResult();
+        calculate('*')
+    }
+});
+
+let buttonDivide = document.querySelector('.divide-btn');
+buttonDivide.addEventListener('click', () => {
+    if (operator === undefined){
+        calculate('/');
+    } else {
+        displayResult();
+        calculate('/')
+    }
+});
+
+//Click on equal button runs the operate function to calculate value
+let buttonEquals = document.querySelector('.equals-btn');
+buttonEquals.addEventListener('click', displayResult);
 
