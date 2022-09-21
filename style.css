@@ -29,6 +29,7 @@ footer{
     border: 3px solid black;
     border-radius: 0.5rem;
     width: 26rem;
+    max-width: 95%;
     height: fit-content;
     padding: 2rem 0;
     display: flex;
@@ -38,6 +39,7 @@ footer{
     gap: 1rem;
     background-color: #e7d3f3;
     margin-top: 4rem;
+    margin-bottom: 1rem;
 }
 
 .display{
@@ -76,7 +78,7 @@ footer{
 }
 
 button{
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: #f3b1d5;
     border: 2px solid #080808;
     border-radius: 1rem;

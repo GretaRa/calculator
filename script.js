@@ -91,9 +91,11 @@ buttonZero.addEventListener('click', () => {
 
 let buttonDec = document.querySelector('.dec-btn');
 buttonDec.addEventListener('click', () => {
-    if (displayValue.textContent.includes('.')){
+    if (operator === undefined && displayValue.textContent.split(operator)[0].includes('.')){
         return;
-    };
+    } else if (operator !== undefined && displayValue.textContent.split(operator)[1].includes('.')){
+        return;
+    }
     displayValue.textContent += '.';
 });
 
