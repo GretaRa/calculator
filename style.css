@@ -9,7 +9,6 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     background-color: #e8f1f3;
     overflow: hidden;
@@ -88,6 +87,15 @@ button{
     background-color: #ae82cc;
 }
 
-.clear-btn{
+.clear-btn,
+.clear-all-btn{
     background-color: #e7648b;
+    padding: 1rem;
 }
+
+.clear-btn-menu{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+

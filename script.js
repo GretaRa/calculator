@@ -89,9 +89,17 @@ buttonZero.addEventListener('click', () => {
     displayValue.textContent += '0';
 });
 
-//Clear button 
-let buttonClear = document.querySelector('.clear-btn');
-buttonClear.addEventListener('click', () => {
+let buttonDec = document.querySelector('.dec-btn');
+buttonDec.addEventListener('click', () => {
+    if (displayValue.textContent.includes('.')){
+        return;
+    };
+    displayValue.textContent += '.';
+});
+
+//Clear all button 
+let buttonClearAll = document.querySelector('.clear-all-btn');
+buttonClearAll.addEventListener('click', () => {
     displayValue.textContent = '';
     a = undefined;
     b = undefined;
