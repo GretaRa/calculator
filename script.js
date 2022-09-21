@@ -98,7 +98,6 @@ buttonClear.addEventListener('click', () => {
     operator = undefined;
 });
 
-
 //Function to prevent multiple operators in a row
 function displayOperator (oper){
     if (operator !== undefined){
@@ -115,11 +114,13 @@ function round(value, decimals) {
 
 //Takes number a and b and operator, displayOperators and displays the result
 function displayResult(){
-    
     a = Number(displayValue.textContent.split(operator)[0]);
     b = Number(displayValue.textContent.split(operator)[1]);
     let result = operate(a,operator,b);
-    if (operator === '/' && b === 0){
+
+    if (displayValue.textContent.split(operator)[1] === ''){
+        return;
+    } else if (operator === '/' && b === 0){
         displayValue.textContent = 'Nope';
         return;
     } else {
