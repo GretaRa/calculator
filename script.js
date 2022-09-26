@@ -99,6 +99,14 @@ buttonDec.addEventListener('click', () => {
     displayValue.textContent += '.';
 });
 
+function clear (){
+    displayValue.textContent = displayValue.textContent.substring(0, displayValue.textContent.length - 1); 
+};
+
+//Clear one character button 
+let buttonClear = document.querySelector('.clear-btn');
+buttonClear.addEventListener('click', clear);
+
 //Clear all button 
 let buttonClearAll = document.querySelector('.clear-all-btn');
 buttonClearAll.addEventListener('click', () => {
