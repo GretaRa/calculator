@@ -14,6 +14,10 @@ function multiply (a,b){
 function divide (a,b){
     return (a / b);
 };
+let displayValue = document.querySelector('.display');
+let a 
+let b
+let operator
 
 //takes an operator and 2 numbers and then calls created mathematical functions on the numbers
 function operate(a,operator,b){
@@ -29,13 +33,6 @@ function operate(a,operator,b){
         return null;
     }
 };
-
-let displayValue = document.querySelector('.display');
-let a 
-let b
-let operator
-
-
 
 //Populate the display when the buttons are clicked
 
@@ -99,13 +96,7 @@ buttonDec.addEventListener('click', () => {
     displayValue.textContent += '.';
 });
 
-function clear (){
-    displayValue.textContent = displayValue.textContent.substring(0, displayValue.textContent.length - 1); 
-};
 
-//Clear one character button 
-let buttonClear = document.querySelector('.clear-btn');
-buttonClear.addEventListener('click', clear);
 
 //Clear all button 
 let buttonClearAll = document.querySelector('.clear-all-btn');
@@ -139,11 +130,12 @@ function displayResult(){
     if (displayValue.textContent.split(operator)[1] === ''){
         return;
     } else if (operator === '/' && b === 0){
-        displayValue.textContent = 'Nope';
+        displayValue.textContent = 'Nice try';
         return;
     } else {
         displayValue.textContent = round(result,2);
         operator = undefined;
+        b = undefined;
     };
 };
 
@@ -198,3 +190,15 @@ buttonEquals.addEventListener('click', () => {
     };
 });
 
+function clear (){
+    if (displayValue.textContent.split(operator)[1] === ''){
+        displayValue.textContent = displayValue.textContent.substring(0, displayValue.textContent.length - 1);
+        operator = undefined;
+    } else {
+        displayValue.textContent = displayValue.textContent.substring(0, displayValue.textContent.length - 1);
+    }
+};
+
+//Clear one character button 
+let buttonClear = document.querySelector('.clear-btn');
+buttonClear.addEventListener('click', clear);
