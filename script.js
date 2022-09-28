@@ -96,16 +96,18 @@ buttonDec.addEventListener('click', () => {
     displayValue.textContent += '.';
 });
 
-
-
-//Clear all button 
-let buttonClearAll = document.querySelector('.clear-all-btn');
-buttonClearAll.addEventListener('click', () => {
+function clearDisplay (){
     displayValue.textContent = '';
     a = undefined;
     b = undefined;
     operator = undefined;
-});
+    reset=false;
+};
+
+
+//Clear all button 
+let buttonClearAll = document.querySelector('.clear-all-btn');
+buttonClearAll.addEventListener('click', clearDisplay);
 
 //Function to prevent multiple operators in a row
 function displayOperator (oper){
@@ -139,45 +141,34 @@ function displayResult(){
     };
 };
 
+function handleOperatorEvent (operatorSign){
+    if (operator === undefined){
+        displayOperator(operatorSign);
+    } else {
+        displayResult();
+        displayOperator(operatorSign);
+    }
+};
+
 
 let buttonPlus = document.querySelector('.add-btn');
 buttonPlus.addEventListener('click', () => {
-    if (operator === undefined){
-        displayOperator('+');
-    } else {
-        displayResult();
-        displayOperator('+')
-    }
+   handleOperatorEvent ('+');
 });
 
 let buttonSubstract = document.querySelector('.substract-btn');
 buttonSubstract.addEventListener('click', () => {
-    if (operator === undefined){
-        displayOperator('-');
-    } else {
-        displayResult();
-        displayOperator('-')
-    }
+    handleOperatorEvent ('-');
 });
 
 let buttonMultiply = document.querySelector('.multiply-btn');
 buttonMultiply.addEventListener('click', () => {
-    if (operator === undefined){
-        displayOperator('*');
-    } else {
-        displayResult();
-        displayOperator('*')
-    }
+    handleOperatorEvent ('*');
 });
 
 let buttonDivide = document.querySelector('.divide-btn');
 buttonDivide.addEventListener('click', () => {
-    if (operator === undefined){
-        displayOperator('/');
-    } else {
-        displayResult();
-        displayOperator('/')
-    }
+    handleOperatorEvent ('/');
 });
 
 //Click on equal button runs the operate function to calculate value
@@ -202,3 +193,61 @@ function clear (){
 //Clear one character button 
 let buttonClear = document.querySelector('.clear-btn');
 buttonClear.addEventListener('click', clear);
+
+//keyboard
+let reset=false;
+				
+const display=function( data ){
+    displayValue.textContent += data;
+};
+
+const keyhandler=function(e){
+    let key=e.keyCode;
+    if( reset==true )clearDisplay();
+    const validkeys=[ 8,13,48,49,50,51,52,53,54,55,56,57,67,107,109,106,111,187,190,96,97,98,99,100,101,102,103,104,105 ];
+    if( ~validkeys.indexOf( key ) ){
+        switch( e.keyCode ){
+            case 107:
+                handleOperatorEvent ('+');
+            break;
+            case 109:
+                handleOperatorEvent ('-');
+            break;
+            case 106:
+                handleOperatorEvent ('*');
+            break;
+            case 111:
+                handleOperatorEvent ('/');
+            break;
+            case 190:
+                if (operator === undefined && displayValue.textContent.split(operator)[0].includes('.')){
+                    return;
+                } else if (operator !== undefined && displayValue.textContent.split(operator)[1].includes('.')){
+                    return;
+                }
+                displayValue.textContent += '.';
+            break;
+            case 8:
+                clear();
+            break;
+            case 13:
+            case 187:
+                if (operator === undefined){
+                    return;
+                } else {
+                    displayResult();
+                };						
+            break;
+            case 67:
+                clearDisplay();
+            break;
+            
+            default:
+                display( e.key )
+            break;
+        }
+    }
+};
+
+/* Bind event listeners - keyup and button click */
+document.addEventListener('keyup', keyhandler );
